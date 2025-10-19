@@ -14,24 +14,21 @@ import java.io.IOException;
 public class TreasureMapApp {
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.err.println("Usage: java TreasureMapApplication <input-file> <output-file>");
+            System.err.println("Usage: java TreasureMapApp <input-file> <output-file>");
             System.exit(1);
         }
+        new TreasureMapApp().launch(args[0], args[1]);
+    }
 
-        String inputFile = args[0];
-        String outputFile = args[1];
-
-        try {
-            BufferedReader input =FileReaderFactory.createReader(inputFile);
+    public void launch(String inputFile, String outputFile) {
+        try (BufferedReader input = FileReaderFactory.createReader(inputFile)) {
             TreasureMap treasureMap = TreasureMapParser.parse(input);
-            Processor processor = new Processor(treasureMap, new TreasureMapService(),  new AdventurerService());
+            Processor processor = new Processor(treasureMap, new TreasureMapService(), new AdventurerService());
             processor.runTurns();
-
             TreasureMapWriter.writeOutput(treasureMap, outputFile);
-
             System.out.println("Simulation complete. Output written to: " + outputFile);
         } catch (IOException e) {
-            System.err.println("An error has occurred during the processing of your simulation : "+e.getMessage());
+            System.err.println("Error processing simulation: " + e.getMessage());
         }
     }
 }

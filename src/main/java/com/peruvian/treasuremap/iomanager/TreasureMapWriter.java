@@ -6,7 +6,7 @@ import java.io.*;
 
 public class TreasureMapWriter {
 
-    public static void writeOutput(TreasureMap map, String outputFilePath) throws IOException {
+    public static void writeOutput(TreasureMap map, String outputFilePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
             writeMap(writer, map);
             writeMountains(writer, map);
