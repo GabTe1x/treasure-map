@@ -20,13 +20,13 @@ class AdventurerServiceTest {
     }
 
     @Test
-    void hasNextMove_shouldReturnTrueWhenMovesLeft() {
+    void hasPopNextMove_shouldReturnTrueWhenMovesLeft() {
         assertTrue(service.hasNextMove(adventurer));
     }
 
     @Test
-    void nextMove_shouldConsumeFirstMove() {
-        char move = service.nextMove(adventurer);
+    void popNextMove_shouldConsumeFirstMove() {
+        char move = service.popNextMove(adventurer);
         assertEquals('A', move);
         assertEquals("AD", adventurer.getMovements());
     }

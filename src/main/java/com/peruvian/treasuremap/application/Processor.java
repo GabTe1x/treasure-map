@@ -28,7 +28,7 @@ public class Processor {
     }
 
     private void processMove(Adventurer adventurer) {
-        char move = adventurerService.nextMove(adventurer);
+        char move = adventurerService.popNextMove(adventurer);
         switch (move) {
             case 'A' -> moveForward(adventurer);
             case 'G' -> adventurerService.turnLeft(adventurer);

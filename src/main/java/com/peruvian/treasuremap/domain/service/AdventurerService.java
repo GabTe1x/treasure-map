@@ -10,7 +10,7 @@ public class AdventurerService {
         return !adventurer.getMovements().isEmpty();
     }
 
-    public char nextMove(Adventurer adventurer) {
+    public char popNextMove(Adventurer adventurer) {
         String moves = adventurer.getMovements();
         char next = moves.charAt(0);
         adventurer.setMovements(moves.substring(1));
